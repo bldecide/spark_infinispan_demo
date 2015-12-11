@@ -25,5 +25,6 @@ object CreatingDStream {
 
     ssc.start()
     ssc.awaitTermination()
+
   }
 }
