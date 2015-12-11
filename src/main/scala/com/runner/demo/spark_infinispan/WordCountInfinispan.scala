@@ -10,13 +10,14 @@ import org.infinispan.spark._
   */
 object WordCountInfinispan {
    def main(args: Array[String]): Unit = {
-     val conf = new SparkConf().setAppName("Simple Application").setMaster("local[*]")
+     val conf = new SparkConf().setAppName("WordCountInfinispan").setMaster("local[*]")
      val spark = new SparkContext(conf)
  
-     val textFile = spark.textFile("/Users/Runner/demo/datasets/Activityrecognitionexp/Watch_Accelerometer.csv")
+     val textFile = spark.textFile("/Users/Runner/demo/datasets/text/50465-0.txt")
      val counts = textFile.flatMap(line => line.split(" "))
        .map(word => (word, 1))
        .reduceByKey(_ + _)
+
 //     counts.saveAsTextFile("/Users/Runner/demo/datasets/Activityrecognitionexp/result.csv")
 
      val config = new Properties
@@ -24,6 +25,5 @@ object WordCountInfinispan {
      config.put("infinispan.client.hotrod.server_list","192.168.215.239:11222")
 
      counts.writeToInfinispan(config)
-
    }
  }

@@ -18,5 +18,7 @@ object CreatingRDD {
 
     val infinispanRDD = new InfinispanRDD[String, String](sc, configuration = config)
 
+    println(infinispanRDD.values.count())
+
   }
 }

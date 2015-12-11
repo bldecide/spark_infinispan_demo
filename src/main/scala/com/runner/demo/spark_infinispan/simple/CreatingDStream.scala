@@ -19,6 +19,11 @@ object CreatingDStream {
     config.put("infinispan.client.hotrod.server_list","192.168.215.239:11222")
 
     val ssc = new StreamingContext(sc, Seconds(1))
-    val stream = new InfinispanInputDStream[String, String](ssc, StorageLevel.MEMORY_ONLY, config)
+    val stream = new InfinispanInputDStream(ssc, StorageLevel.MEMORY_ONLY, config)
+
+    stream.print()
+
+    ssc.start()
+    ssc.awaitTermination()
   }
 }
