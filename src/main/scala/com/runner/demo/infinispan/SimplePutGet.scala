@@ -13,10 +13,19 @@ object SimplePutGet {
     val remoteCacheManager = new RemoteCacheManager(build)
 
     // Obtain the remote cache
-    val cache = remoteCacheManager.getCache("default")
+    val cache :RemoteCache[Integer, Integer] = remoteCacheManager.getCache("my-cache")
 
-    val list = cache.getBulk(1000).values()
+    var count = 0
+    val r = scala.util.Random
+    while (true) {
+      val limit = r.nextInt(10)
+      for (i <- 1 to limit) {
+        count += 1
+        cache.put(count, count)
+      }
 
-    println(list.size())
+      println(limit)
+      Thread sleep 1000
+    }
   }
 }
