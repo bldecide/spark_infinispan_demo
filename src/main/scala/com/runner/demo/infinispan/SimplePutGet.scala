@@ -9,11 +9,11 @@ import org.infinispan.client.hotrod.configuration.ConfigurationBuilder
 object SimplePutGet {
   def main(args : Array[String]): Unit = {
     // Create the remote cache manager
-    val build = new ConfigurationBuilder().addServer().host("192.168.215.239").build()
+    val build = new ConfigurationBuilder().addServer().host("172.29.238.69").build()
     val remoteCacheManager = new RemoteCacheManager(build)
 
     // Obtain the remote cache
-    val cache :RemoteCache[Integer, Integer] = remoteCacheManager.getCache("my-cache")
+    val cache :RemoteCache[Integer, Integer] = remoteCacheManager.getCache("default")
 
     cache.put(-1, 10)
     cache.put(-2, 10)

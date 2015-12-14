@@ -9,7 +9,7 @@ import org.infinispan.client.hotrod.configuration.ConfigurationBuilder
 object RandomPut {
   def main(args: Array[String]): Unit = {
     // Create the remote cache manager
-    val build = new ConfigurationBuilder().addServer().host("192.168.215.239").build()
+    val build = new ConfigurationBuilder().addServer().host("172.29.238.69").build()
     val remoteCacheManager = new RemoteCacheManager(build)
 
     // Obtain the remote cache
@@ -18,7 +18,7 @@ object RandomPut {
     var count = 0
     val r = scala.util.Random
     while (true) {
-      val limit = r.nextInt(10)
+      val limit = r.nextInt(1000)
       for (i <- 1 to limit) {
         count += 1
         cache.put(count, count)

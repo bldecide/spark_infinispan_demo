@@ -21,7 +21,7 @@ object CreatingDStream {
     val sc = new SparkContext(conf)
     val config = new Properties
     config.put("infinispan.rdd.cacheName","my-cache")
-    config.put("infinispan.client.hotrod.server_list","192.168.215.239:11222")
+    config.put("infinispan.client.hotrod.server_list","172.29.238.69:11222")
 
     val ssc = new StreamingContext(sc, Seconds(1))
     val inputDStream = new InfinispanInputDStream(ssc, StorageLevel.MEMORY_ONLY, config)

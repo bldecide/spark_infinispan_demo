@@ -14,9 +14,9 @@ object CreatingRDD {
     val sc = new SparkContext(conf)
     val config = new Properties
     config.put("infinispan.rdd.cacheName","default")
-    config.put("infinispan.client.hotrod.server_list","192.168.215.239:11222")
+    config.put("infinispan.client.hotrod.server_list","172.29.238.69:11222")
 
-    val infinispanRDD = new InfinispanRDD[String, String](sc, configuration = config)
+    val infinispanRDD = new InfinispanRDD[Integer, Integer](sc, configuration = config)
 
     println(infinispanRDD.values.count())
 

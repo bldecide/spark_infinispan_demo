@@ -14,8 +14,8 @@ object WriteKeyValueRDDtoInfinispan {
     val conf = new SparkConf().setAppName("Simple Application").setMaster("local[*]")
     val sc = new SparkContext(conf)
     val config = new Properties
-    config.put("infinispan.rdd.cacheName","default")
-    config.put("infinispan.client.hotrod.server_list","192.168.215.239:11222")
+    config.put("infinispan.rdd.cacheName","demo1")
+    config.put("infinispan.client.hotrod.server_list","172.29.238.69:11222")
 
     val simpleRdd = sc.parallelize((1 to 1000)).zipWithIndex()
     simpleRdd.writeToInfinispan(config)
